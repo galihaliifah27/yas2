@@ -23,10 +23,12 @@
   <div class="card">
     <div class="card-body login-card-body">
       <p class="login-box-msg">Sign in to start your session</p>
-
-      <form action="<?php echo base_url('logincontroller/aksi_login'); ?>" method="post">
+      <?php if ($yhis->session->flashdata('error')):?>
+        <p style="color:red;"><?=$this->session->flashdata('error'):?></p>
+        <?php endif; ?>
+      <form action="<?= site_url('auth/process_login')?>" method="post">
         <div class="input-group mb-3">
-          <input type="text" name="username" id="username" class="form-control" placeholder="username">
+          <input type="text" name="username" id="username" class="form-control" placeholder="Email">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
